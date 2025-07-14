@@ -19,8 +19,6 @@ app.get('/todos', (req, res) => {
     res.json(data);
 });
 app.get('/todos/create-todo', (req, res) => {
-    const data = req.body;
-    console.log(data);
     res.send('Hello World!');
 });
 exports.default = app;

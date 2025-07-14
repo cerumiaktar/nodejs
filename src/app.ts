@@ -4,6 +4,8 @@ const app: Application = express()
 import fs from "fs"
 import path from 'path'
 
+app.use(express.json());
+
 const filePath = path.join(__dirname, "../db/todo.json")
 
 
@@ -14,13 +16,14 @@ app.get('/', (req: Request, res: Response) => {
 
 app.get('/todos', (req: Request, res: Response) => {
     const data = fs.readFileSync(filePath, {encoding : "utf-8"});
+    
     console.log(data);
     res.json(data)
 })
 
-app.get('/todos/create-todo', (req: Request, res: Response) => {
+app.post('/todos/create-todo', (req: Request, res: Response) => {
     const data = req.body;
-    console.log(data)
+    console.log(data);
     res.send('Hello World!')
 })
 
