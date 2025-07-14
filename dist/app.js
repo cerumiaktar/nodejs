@@ -8,6 +8,7 @@ const express_1 = __importDefault(require("express"));
 const app = (0, express_1.default)();
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
+app.use(express_1.default.json());
 const filePath = path_1.default.join(__dirname, "../db/todo.json");
 app.get('/', (req, res) => {
     // console.log({req, res});
@@ -18,7 +19,9 @@ app.get('/todos', (req, res) => {
     console.log(data);
     res.json(data);
 });
-app.get('/todos/create-todo', (req, res) => {
+app.post('/todos/create-todo', (req, res) => {
+    const data = req.body;
+    console.log(data);
     res.send('Hello World!');
 });
 exports.default = app;
