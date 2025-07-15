@@ -27,22 +27,26 @@ app.get('/', (req: Request, res: Response, next: NextFunction) => {
 },
     async (req: Request, res: Response, next: NextFunction) => {
         try {
-            console.log(something)
+            // console.log(something)
             res.send('Welcome to todos app')
         } catch (error) {
             next(error)
         }
-    })
+})
 
 app.get('/error',
     async (req: Request, res: Response, next: NextFunction) => {
         try {
-            console.log(something)
+            // console.log(something)
             res.send('Welcome to error')
         } catch (error) {
             next(error)
         }
-    })
+})
+
+app.use((req: Request, res: Response) =>{
+    res.status(404).json({message:'route not found'})
+})
 
 app.use((error: any, req: Request, res: Response, next: NextFunction) => {
     if (error) {
